@@ -1,6 +1,6 @@
 #!/bin/bash
 USER_ID=$(id -u)
-if [USER_ID -eq 0 ]; then
+if [ $USER_ID -eq 0 ]; then
  echo "installing inginx"
 else 
  echo "switch to root user"

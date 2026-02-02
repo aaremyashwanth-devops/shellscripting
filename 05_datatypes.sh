@@ -11,4 +11,4 @@ echo "accessing first item $ITEMS"
 echo "accessing secound item {$ITEMS[1]}"
 #addition
 echo "$(($AGE + 2)):: result"
-echo "addition two ages are $(($AGE + $AGE1))
+echo "addition two ages are $(($AGE + $AGE1))"

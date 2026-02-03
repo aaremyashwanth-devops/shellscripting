@@ -11,6 +11,7 @@ USER_ID=$(id -u)
      dnf install $package -y
      echo "installed $package"
      }
+     VALIDATE "$package"
     fi
 
  done

@@ -6,6 +6,7 @@ VALIDATE(){
      echo "you are root user"
      echo "Ready to install dnf $1"
      dnf install $2
+     echo "entered package name $2"
      exit 1
     else 
      echo "please switch to root user"

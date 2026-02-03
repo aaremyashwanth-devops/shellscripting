@@ -5,13 +5,12 @@ USER_ID=$(id -u)
  do 
     if [ $USER_ID -eq 0 ]; then
      echo "you are root user"
-     VALIDATE(){
+     
 
-     echo "installing $package"
      dnf install $package -y
+     
      echo "installed $package"
-     }
-     VALIDATE "$package"
+     
     fi
 
  done

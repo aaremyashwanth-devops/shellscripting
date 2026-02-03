@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 USER_ID=$(id -u)
 VALIDATE(){
     if [ $USER_ID -eq 0 ]; then
@@ -9,4 +10,4 @@ VALIDATE(){
      echo "please switch to root user"
     fi
 }
-VALIDATE "installing $package"
+VALIDATE "installing mysql"

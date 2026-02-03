@@ -4,3 +4,4 @@ LOGS_FILE="/var/log/shell_script/$0.log"
 
 echo "just now created log file"  &>> $LOGS_FILE
 echo "CHECK log file"  &>> $LOGS_FILE
+echo "i checked log file,eveything is fine" |tee -a $LOGS_FILE

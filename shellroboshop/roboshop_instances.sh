@@ -10,7 +10,6 @@ for instance in $@
     --image-id $iam_id \
     --instance-type t3.micro \
     --security-group-ids $sg_id \ 
-    --associate-public-ip-address \
     --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$instance}]" \
     --query 'Instances[0].InstanceId' \
     --output text

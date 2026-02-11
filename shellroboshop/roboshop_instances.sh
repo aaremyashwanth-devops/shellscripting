@@ -8,7 +8,7 @@ set -e
 for instance in $@
  do 
     INSTANCE_ID=$(aws ec2 run-instances \
-    --image-id "$ami_id" \
+    --image-id "$iam_id" \
     --instance-type t3.micro \
     --security-group-ids "$sg_id" \
     --associate-public-ip-address \

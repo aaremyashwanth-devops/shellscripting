@@ -3,17 +3,20 @@ sg_id="sg-0d63af36e18f90251"
 iam_id="ami-0220d79f3f480ecf5"
 DOMAIN_NAME="yashwanthaarem.in"
 ZONE_ID="Z017691837EJOVFVM6G3X"
+set -e
 
 for instance in $@
  do 
     INSTANCE_ID=$(aws ec2 run-instances \
-    --image-id $iam_id \
+    --image-id "$ami_id" \
     --instance-type t3.micro \
-    --security-group-ids "$sg_id" \ 
+    --security-group-ids "$sg_id" \
+    --associate-public-ip-address \
     --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$instance}]" \
     --query 'Instances[0].InstanceId' \
-    --output text
- )
+    --output text)
+   
+ 
 
     if [ "frontend" == $instance ]; then
         IP=$(aws ec2 describe-instances \

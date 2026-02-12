@@ -8,7 +8,7 @@ G="-e[32m"
 Y="-e[33m"
 N="-e[0m"
 
-if [ USER_ID -ne 0 ]; then
+if [ $USER_ID -ne 0 ]; then
   echo "switch to root user"
  exit 1
  else
@@ -16,9 +16,9 @@ if [ USER_ID -ne 0 ]; then
 fi
 validate(){
  if [ $1 -ne 0 ]; then
-  echo -e " $R failure" | tee -a $LOGFILE
+  echo -e " $2... $R failure $N" | tee -a $LOGFILE
   else
-   echo -e "$G successfull" | tee -a $LOGFILE
+   echo -e "$2... $G successfull $N" | tee -a $LOGFILE
   fi
 }
 mkdir -p shelllog

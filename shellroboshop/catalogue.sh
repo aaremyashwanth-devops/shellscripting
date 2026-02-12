@@ -34,7 +34,7 @@ validate $? "install nodejs"
 
 id roboshop &>>LOGFILE
 if [ $? -ne 0 ]; then
-    useradd  --system --home /app --shell /sbin/nologin --comment"create user roboshop" roboshop &>>LOGFILE
+    useradd  --system --home /app --shell /sbin/nologin --comment"create user roboshop" roboshop &>>$LOGFILE
     validate $? "useradd"
 else 
     echo -e " skipping"
@@ -62,7 +62,7 @@ systemctl start catalogue
 validate $? "catalogue started"
 
 cp $CURRENT_DIR/mongo.repo /etc/yum.repo.d/mongo.repo
-dnf install mongodb-org -y 
+dnf install mongodb-mongosh -y 
 
 INDEX=$(mongosh --host $MONGODB_DOMAIN --quiet  --eval 'db.getMongo().getDBNames().indexOf("catalogue")')
 

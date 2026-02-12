@@ -26,16 +26,16 @@ validate(){
 dnf module disable nodejs -y  &>>$LOGFILE
 validate $? "module disable"  
 
-dnf module enable nodejs:20 -y &>>LOGFILE
+dnf module enable nodejs:20 -y &>>$LOGFILE
 validate $? "enable nodejs"
 
-dnf install nodejs -y &>>LOGFILE
+dnf install nodejs -y &>>$LOGFILE
 validate $? "install nodejs"
 
-id roboshop &>>LOGFILE
+id roboshop &>>$LOGFILE
 if [ $? -ne 0 ]; then
-    useradd  --system --home /app --shell /sbin/nologin --comment"create user roboshop" roboshop &>>$LOGFILE
-    validate $? "useradd"
+    useradd  --system --home /app --shell /sbin/nologin --comment "create user roboshop" roboshop &>>$LOGFILE
+    validate $? "creating user"
 else 
     echo -e " skipping"
 fi
@@ -46,11 +46,11 @@ validate $? "app dictory created"
 rm -rf /app/*
 validate $? "remove exiting code"
 
-cd /app &>>LOGFILE
+cd /app &>>$LOGFILE
 curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip &>>$LOGFILE
 unzip /tmp/catalogue.zip
 
-npm install &>>LOGFILE
+npm install &>>$LOGFILE
 
 cp $CURRENT_DIR/catalogue.service /etc/systemd/system/catalogue.service 
 validate $? "service file is created"
@@ -61,7 +61,7 @@ systemctl enable catalogue
 systemctl start catalogue 
 validate $? "catalogue started"
 
-cp $CURRENT_DIR/mongo.repo /etc/yum.repo.d/mongo.repo
+cp $CURRENT_DIR/mongo.repo /etc/yum.repos.d/mongo.repo
 dnf install mongodb-mongosh -y 
 
 INDEX=$(mongosh --host $MONGODB_DOMAIN --quiet  --eval 'db.getMongo().getDBNames().indexOf("catalogue")')

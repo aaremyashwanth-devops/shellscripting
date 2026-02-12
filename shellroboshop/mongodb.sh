@@ -8,7 +8,7 @@ G="-e[32m"
 Y="-e[33m"
 N="-e[0m"
 
-if [USER_ID -nq 0 ]; then
+if [ USER_ID -ne 0 ]; then
  echo "switch to root user"
 exit 1
 fi

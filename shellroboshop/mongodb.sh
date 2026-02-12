@@ -9,14 +9,16 @@ Y="-e[33m"
 N="-e[0m"
 
 if [ USER_ID -ne 0 ]; then
- echo "switch to root user"
-exit 1
+  echo "switch to root user"
+ exit 1
+ else
+  echo you are root user
 fi
 validate(){
  if [ $1 -ne 0 ]; then
-  echo " $R failure" | tee -a $LOGFILE
+  echo -e " $R failure" | tee -a $LOGFILE
   else
-   echo "$G successfull" | tee -a $LOGFILE
+   echo -e "$G successfull" | tee -a $LOGFILE
   fi
 }
 mkdir -p shelllog

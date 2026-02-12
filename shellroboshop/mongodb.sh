@@ -12,7 +12,7 @@ if [ USER_ID -ne 0 ]; then
   echo "switch to root user"
  exit 1
  else
-  echo you are root user
+  echo "you are root user"
 fi
 validate(){
  if [ $1 -ne 0 ]; then

@@ -20,6 +20,7 @@ validate(){
         echo -e "$2...$R failure$N" | tee -a $LOGFILE
     else
         echo -e "$2...$R successfull$N" |tee -a $LOGFILE
+    fi
 }
 
 dnf module disable nodejs -y  &>>$LOGFILE

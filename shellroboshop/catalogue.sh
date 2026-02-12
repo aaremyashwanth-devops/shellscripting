@@ -3,7 +3,7 @@ USER_ID=$(id -u)
 LOGFOLDER="/var/log/shelllog"
 LOGFILE="$LOGFOLDER/$0.log"
 CURRENT_DIR=$PWD
-
+MONGODB_MOMAIN=mongodb.yashwanthaarem.in
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
@@ -40,8 +40,11 @@ else
     echo -e " skipping"
 fi
 
-mkdir /app &>>$LOGFILE
+mkdir -p /app &>>$LOGFILE
 validate $? "app dictory created"
+
+rm -rf /app/*
+validate $? "remove exiting code"
 
 cd /app &>>LOGFILE
 curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip &>>$LOGFILE
@@ -61,10 +64,10 @@ validate $? "catalogue started"
 cp $CURRENT_DIR/mongo.repo /etc/yum.repo.d/mongo.repo
 dnf install mongodb-org -y 
 
-INDEX=$(mongosh --host $MONGODB_HOST --quiet  --eval 'db.getMongo().getDBNames().indexOf("catalogue")')
+INDEX=$(mongosh --host $MONGODB_DOMAIN --quiet  --eval 'db.getMongo().getDBNames().indexOf("catalogue")')
 
 if [ $INDEX -le 0 ]; then
-    mongosh --host $MONGODB_HOST </app/db/master-data.js
+    mongosh --host $MONGODB_DOMAIN </app/db/master-data.js
     VALIDATE $? "Loading products"
 else
     echo -e "Products already loaded ... $Y SKIPPING $N"

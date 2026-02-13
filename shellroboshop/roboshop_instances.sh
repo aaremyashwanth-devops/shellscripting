@@ -1,7 +1,7 @@
 #!/bin/bash
 sg_id="sg-0d63af36e18f90251"
 iam_id="ami-0220d79f3f480ecf5"
-DOMAIN_NAME="yashwanthaarem.in"
+DOMAIN_HOST="yashwanthaarem.in"
 ZONE_ID="Z017691837EJOVFVM6G3X"
 set -e
 
@@ -22,12 +22,12 @@ for instance in $@
         IP=$(aws ec2 describe-instances \
         --instance-ids $INSTANCE_ID \
         --query 'Reservations[].Instances[].PublicIpAddress' --output text)
-        RECORD_NAME="$DOMAIN_NAME"
+        RECORD_NAME="$DOMAIN_HOST"
     else
         IP=$(aws ec2 describe-instances \
         --instance-ids $INSTANCE_ID \
         --query 'Reservations[].Instances[].PrivateIpAddress' --output text)
-        RECORD_NAME="$instance.$DOMAIN_NAME"
+        RECORD_NAME="$instance.$DOMAIN_HOST"
     fi
 
 

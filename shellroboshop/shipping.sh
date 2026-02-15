@@ -41,7 +41,7 @@ validate $? "app dictory created"
 rm -rf /app/*
 validate $? "remove exiting code"
 cd /app &>>$LOGFILE
-curl -L -o curl -L -o /tmp/shipping.zip https://roboshop-artifacts.s3.amazonaws.com/shipping-v3.zip   &>>$LOGFILE
+curl -L -o /tmp/shipping.zip https://roboshop-artifacts.s3.amazonaws.com/shipping-v3.zip   &>>$LOGFILE
 unzip /tmp/shipping.zip
 
 dnf install maven -y  &>>$LOGFILE

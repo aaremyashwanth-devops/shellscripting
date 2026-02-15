@@ -45,7 +45,6 @@ validate $? "app dictory created"
 
 rm -rf /app/*
 validate $? "remove exiting code"
-
 cd /app &>>$LOGFILE
 curl -L -o /tmp/cart.zip https://roboshop-artifacts.s3.amazonaws.com/cart-v3.zip  &>>$LOGFILE
 unzip /tmp/user.zip

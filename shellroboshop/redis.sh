@@ -3,9 +3,11 @@ LOGFOLDER="/var/log/shelllog"
 LOGFILE="$LOGFOLDER/$0.logs"
 if [ $USER_ID -ne 0 ]; then
     echo "you are root user"
+    exit 1
 else
     echo "you are not root user"
 fi
+
 dnf module disable redis -y &>>$LOGFILE
 dnf module enable redis:7 -y
 dnf install redis -y

@@ -23,8 +23,7 @@ validate(){
     fi
 }
 
-dnf install maven -y  &>>$LOGFILE
-validate $? "install maven"  
+ 
 
 
 
@@ -44,6 +43,9 @@ validate $? "remove exiting code"
 cd /app &>>$LOGFILE
 curl -L -o curl -L -o /tmp/shipping.zip https://roboshop-artifacts.s3.amazonaws.com/shipping-v3.zip   &>>$LOGFILE
 unzip /tmp/shipping.zip
+
+dnf install maven -y  &>>$LOGFILE
+validate $? "install maven" 
 
 dnf mvn clean package  &>>$LOGFILE
 validate $? "package clean"

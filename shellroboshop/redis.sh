@@ -1,7 +1,7 @@
 USER_ID=$(id -u)
 LOGFOLDER="/var/log/shelllog"
 LOGFILE="$LOGFOLDER/$0.logs"
-if [ $USER_ID -el 0 ]; then
+if [ $USER_ID -ne 0 ]; then
     echo "you are root user"
 else
     echo "you are not root user"

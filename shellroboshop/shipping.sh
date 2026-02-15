@@ -47,10 +47,10 @@ unzip /tmp/shipping.zip
 dnf install maven -y  &>>$LOGFILE
 validate $? "install maven" 
 
-dnf mvn clean package  &>>$LOGFILE
+mvn clean package  &>>$LOGFILE
 validate $? "package clean"
 
-dnf mv target/shipping-1.0.jar shipping.jar  &>>$LOGFILE
+mv target/shipping-1.0.jar shipping.jar  &>>$LOGFILE
 validate $? "moved shipping file"
 
 cp $CURRENT_DIR/shipping.service /etc/systemd/system/shipping.service 

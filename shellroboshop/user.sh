@@ -1,4 +1,4 @@
-#1/bin/bash
+#!/bin/bash
 USER_ID=$(id -u)
 LOGFOLDER="/var/log/shelllog"
 LOGFILE="$LOGFOLDER/$0.log"

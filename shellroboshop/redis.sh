@@ -1,11 +1,13 @@
+#!/bin/bash
 USER_ID=$(id -u)
 LOGFOLDER="/var/log/shelllog"
 LOGFILE="$LOGFOLDER/$0.logs"
+
 if [ $USER_ID -ne 0 ]; then
-    echo "you are root user"
+    echo "you are  not root user"
     exit 1
 else
-    echo "you are not root user"
+    echo "you are root user"
 fi
 
 dnf module disable redis -y &>>$LOGFILE

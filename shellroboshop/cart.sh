@@ -56,7 +56,7 @@ rm -rf /app/*
 VALIDATE $? "Removing existing code"
 
 unzip /tmp/cart.zip &>>$LOGFILE
-VALIDATE $? "Uzip cart code"
+VALIDATE $? "Unzip cart code"
 
 npm install  &>>$LOGFILE
 VALIDATE $? "Installing dependencies"

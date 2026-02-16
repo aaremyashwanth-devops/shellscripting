@@ -38,7 +38,7 @@ unzip /tmp/payment.zip
 
 pip3 install -r requirements.txt
 
-cp $CURRETNT_DIR/payment.service /etc/system/systemd/payment.service
+cp $CURRETNT_DIR/payment.service /etc/systemd/system/payment.service
 
 validation $? "systemctl is enable"
 

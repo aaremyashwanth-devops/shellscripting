@@ -1,6 +1,6 @@
 #!/bin/bash
 USER_ID=$(id -u)
-LOGFOLDER="/var/log/shelllogs"
+LOGFOLDER="/var/log/shelllog"
 LOGFILE="$LOGFOLDER/$0.log"
 CURRETNT_DIR=$PWD
 

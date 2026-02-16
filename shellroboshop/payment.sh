@@ -23,7 +23,7 @@ validation $? "python install"
 
 id roboshop &>>$LOGFILE
 
-if [ $? -e 0 ]; then
+if [ $? -eq 0 ]; then
  echo "user is exits"
  exit 1
 else 
@@ -43,3 +43,4 @@ validation $? "systemctl is enable"
 systemctl daemon-reload
 systemctl enable payment
 systemctl start payment
+validation $? "start payment"

@@ -1,7 +1,7 @@
 #!/bin/bash
 USER_ID=$(id -u)
 LOGFOLDER="/var/log/shelllog"
-LOGFILE="$LOGFOLDER/$0.logs"
+LOGFILE="$LOGFOLDER/$0.log"
 
 if [ $USER_ID -ne 0 ]; then
     echo "you are  not root user"

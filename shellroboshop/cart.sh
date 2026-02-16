@@ -1,8 +1,8 @@
 #!/bin/bash
 
 USERID=$(id -u)
-LOGSFOLDER="/var/log/shelllog"
-LOGSFILE="$LOGS_FOLDER/$0.log"
+LOGFOLDER="/var/log/shelllog"
+LOGFILE="$LOGS_FOLDER/$0.log"
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"

@@ -9,7 +9,7 @@ if [ $USER_ID -ne 0 ]; then
 else
     echo "you are root user"
 fi
-
+mkdir -p /shelllog
 dnf module disable redis -y &>>$LOGFILE
 dnf module enable redis:7 -y
 dnf install redis -y

@@ -18,7 +18,7 @@ validation(){
     fi
 }
 
-dnf install python3 gcc python3-delvel -y
+dnf install python3 gcc python3-devel -y
 validation $? "python install"
 
 id roboshop &>>$LOGFILE

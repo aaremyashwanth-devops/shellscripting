@@ -2,7 +2,7 @@
 
 USERID=$(id -u)
 LOGFOLDER="/var/log/shelllog"
-LOGFILE="$LOGS_FOLDER/$0.log"
+LOGFILE="$LOGFOLDER/$0.log"
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"

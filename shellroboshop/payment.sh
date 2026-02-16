@@ -21,6 +21,7 @@ validation(){
 dnf install python3 gcc python3-devel -y
 validation $? "python install"
 
+
 id roboshop &>>$LOGFILE
 
 if [ $? -eq 0 ]; then
@@ -29,7 +30,8 @@ if [ $? -eq 0 ]; then
 else 
  useradd --system --home /app --shell /sbin/nologin --comment "create user roboshop" roboshop
 fi
-mkdir /app
+mkdir -p /app
+rm -rf /app/*
 cd /app
 curl -L -o /tmp/payment.zip https://roboshop-artifacts.s3.amazonaws.com/payment-v3.zip 
 unzip /tmp/payment.zip
